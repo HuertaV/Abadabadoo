@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using TMPro;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,7 +10,7 @@ using UnityEngine.UI;
 public class ScoreDisplay : UIelement
 {
     [Tooltip("The text UI to use for display")]
-    public Text displayText = null;
+    public TMP_Text displayText = null;
 
     /// <summary>
     /// Description:
