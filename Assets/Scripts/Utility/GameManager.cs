@@ -62,7 +62,15 @@ public class GameManager : MonoBehaviour
 
     //The number of enemies observed by the game manager in this scene at start up"
     private int numberOfEnemiesFoundAtStart;
+    [SerializeField]
+    private int playerSkin = 1;
+    public Sprite[] skins;
 
+
+    private void OnEnable()
+    {
+        
+    }
     /// <summary>
     /// Description:
     /// Standard Unity function called when the script is loaded, called before start
@@ -122,6 +130,8 @@ public class GameManager : MonoBehaviour
         {
             FigureOutHowManyEnemiesExist();
         }
+        playerSkin = PlayerPrefs.GetInt("PlayerSkin", 0);
+        player.GetComponent<SpriteRenderer>().sprite = skins[playerSkin];
     }
 
     /// <summary>

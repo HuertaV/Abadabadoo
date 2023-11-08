@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 4538254629378677433}
   - component: {fileID: 4858963062176553145}
   - component: {fileID: 2859312171587629467}
-  - component: {fileID: 7367560606293232632}
   - component: {fileID: 5346992306823370584}
   - component: {fileID: 8714724170192987480}
   - component: {fileID: 2857697494164179392}
@@ -82,7 +81,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2934537193391203678, guid: 189ba7a3517573748bac900893e11acf, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 396c86c3d12b73c4e9715a59f36188c8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -101,7 +100,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4613857841346817561}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 0}
   m_CullingMode: 0
@@ -155,29 +154,6 @@ MonoBehaviour:
   maximumLives: 5
   deathEffect: {fileID: 0}
   hitEffect: {fileID: 0}
---- !u!114 &7367560606293232632
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4613857841346817561}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52c9a4613bbc6ce4b809b21678067793, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  teamId: 0
-  defaultHealth: 1
-  maximumHealth: 3
-  currentHealth: 1
-  invincibilityTime: 3
-  isAlwaysInvincible: 0
-  useLives: 0
-  currentLives: 3
-  maximumLives: 5
-  deathEffect: {fileID: 6218169049356006189, guid: 68794701c80057447857bb433e54c579, type: 3}
-  hitEffect: {fileID: 5156419567158778961, guid: d35295653acdbe24081a5caee3d9c353, type: 3}
 --- !u!50 &5346992306823370584
 Rigidbody2D:
   serializedVersion: 4
@@ -241,7 +217,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.4375, y: 1.4375}
+    oldSize: {x: 1.5, y: 2}
     newSize: {x: 1.4375, y: 1.4375}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
