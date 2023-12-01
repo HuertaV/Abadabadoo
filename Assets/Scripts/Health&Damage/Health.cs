@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>
 /// This class handles the health state of a game object.
@@ -34,6 +35,8 @@ public class Health : MonoBehaviour
     [Tooltip("The maximum number of lives this health can have")]
     public int maximumLives = 5;
 
+    public Text healthText;
+
     /// <summary>
     /// Description:
     /// Standard unity funciton called before the first frame update
@@ -58,6 +61,10 @@ public class Health : MonoBehaviour
     void Update()
     {
         InvincibilityCheck();
+        if (teamId == 0 )
+        {
+            healthText.text = "X" + currentLives;
+        }
     }
 
     // The specific game time when the health can be damged again

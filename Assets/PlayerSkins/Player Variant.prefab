@@ -9,9 +9,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 181750272442041031, guid: 0336ee26154983547ac7209af3375c6c, type: 3}
+      propertyPath: m_Size.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 181750272442041031, guid: 0336ee26154983547ac7209af3375c6c, type: 3}
+      propertyPath: m_Size.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 181750272442041031, guid: 0336ee26154983547ac7209af3375c6c, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 396c86c3d12b73c4e9715a59f36188c8, type: 3}
+      objectReference: {fileID: 21300000, guid: ae1ca885531014c489535799ba4be3d8, type: 3}
     - target: {fileID: 489303608027099637, guid: 0336ee26154983547ac7209af3375c6c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -55,6 +63,14 @@ PrefabInstance:
     - target: {fileID: 4613857841346817561, guid: 0336ee26154983547ac7209af3375c6c, type: 3}
       propertyPath: m_Name
       value: Player Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 8714724170192987480, guid: 0336ee26154983547ac7209af3375c6c, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8714724170192987480, guid: 0336ee26154983547ac7209af3375c6c, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.y
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8714724170192987480, guid: 0336ee26154983547ac7209af3375c6c, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x

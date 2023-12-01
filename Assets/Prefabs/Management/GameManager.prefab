@@ -24,12 +24,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4867940027157724160}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.1876413, y: 0.4691445, z: -0.8492386}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4867940027157724161
 MonoBehaviour:
@@ -52,5 +53,11 @@ MonoBehaviour:
   printDebugOfWinnableStatus: 1
   gameVictoryPageIndex: 0
   victoryEffect: {fileID: 6671380785883311296, guid: 1dbb1fe3f1006ce4b89f203ed833e04e, type: 3}
+  playerSkin: 1
+  skins:
+  - {fileID: 21300000, guid: ae1ca885531014c489535799ba4be3d8, type: 3}
+  - {fileID: 21300000, guid: 2b206ee42af4a1b428cfb8e3d25dfd93, type: 3}
+  - {fileID: 21300000, guid: 7dca6398d5beb884b93daf739e40b65e, type: 3}
   gameOverPageIndex: 0
   gameOverEffect: {fileID: 3623134921759700094, guid: bfc99d98d6418b04590bafbb9ddc8cd5, type: 3}
+  gameIsOver: 0
