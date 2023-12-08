@@ -88,8 +88,12 @@ public class CameraController : MonoBehaviour
             Vector3 targetPosition = GetTargetPosition();
             Vector3 mousePosition = GetPlayerMousePosition();
             Vector3 desiredCameraPosition = ComputeCameraPosition(targetPosition, mousePosition);
+            
+            float x = Mathf.Clamp(desiredCameraPosition.x, -74f, 70.5f);
 
-            transform.position = desiredCameraPosition;
+            float y = Mathf.Clamp(desiredCameraPosition.y, -57.3f, 61.6f);
+            
+            transform.position = new Vector3(x, y, desiredCameraPosition.z);
         }      
     }
 
