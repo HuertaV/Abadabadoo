@@ -10,12 +10,19 @@ public class ChangeSkin : MonoBehaviour
     public Image skinImage;
     private void OnEnable()
     {
-        skin = PlayerPrefs.GetInt("PlayerSkin", 0);
-       
+        
+
     }
     private void Start()
     {
+        skin = PlayerPrefs.GetInt("PlayerSkin", 0);
         skins = GameManager.instance.skins;
+        if (skin > skins.Length - 1)
+        {
+            skin = 0;
+        }
+        skinImage.sprite = skins[skin];
+        Debug.Log(skin);
     }
     public void Change()
     {
@@ -26,6 +33,7 @@ public class ChangeSkin : MonoBehaviour
         }
         skinImage.sprite = skins[skin];
         PlayerPrefs.SetInt("PlayerSkin", skin);
+        Debug.Log(skin);
     }
     
 }

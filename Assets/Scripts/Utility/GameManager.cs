@@ -63,7 +63,7 @@ public class GameManager : MonoBehaviour
     //The number of enemies observed by the game manager in this scene at start up"
     private int numberOfEnemiesFoundAtStart;
     [SerializeField]
-    private int playerSkin = 1;
+    private int playerSkin;
     public Sprite[] skins;
 
 
@@ -125,13 +125,15 @@ public class GameManager : MonoBehaviour
         {
             score = PlayerPrefs.GetInt("score");
         }
+        playerSkin = PlayerPrefs.GetInt("PlayerSkin", 0);
+        Debug.Log(skins[playerSkin]);
+        player.GetComponent<SpriteRenderer>().sprite = skins[playerSkin];
         UpdateUIElements();
         if (printDebugOfWinnableStatus)
         {
             FigureOutHowManyEnemiesExist();
         }
-        playerSkin = PlayerPrefs.GetInt("PlayerSkin", 0);
-        player.GetComponent<SpriteRenderer>().sprite = skins[playerSkin];
+       
     }
 
     /// <summary>
