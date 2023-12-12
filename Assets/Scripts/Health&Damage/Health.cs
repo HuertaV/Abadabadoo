@@ -11,6 +11,7 @@ using UnityEngine.UI;
 /// </summary>
 public class Health : MonoBehaviour
 {
+    public GameObject Player;
     [Header("Team Settings")]
     [Tooltip("The team associated with this damage")]
     public int teamId = 0;
@@ -35,6 +36,14 @@ public class Health : MonoBehaviour
     [Tooltip("The maximum number of lives this health can have")]
     public int maximumLives = 5;
 
+    public GameObject livesCounter;
+    public Camera MainCamera;
+
+    public int RespawnConstraintX;
+    public int RespawnConstraintY;
+    public bool Bottom = false;
+    public bool One = false;
+
     public Text healthText;
 
     /// <summary>
@@ -47,7 +56,7 @@ public class Health : MonoBehaviour
     /// </summary>
     void Start()
     {
-        SetRespawnPoint(transform.position);
+        timeToBecomeDamagableAgain = Time.time + invincibilityTime;
     }
 
     /// <summary>
@@ -64,6 +73,11 @@ public class Health : MonoBehaviour
         if (teamId == 0 )
         {
             healthText.text = "X" + currentLives;
+        }
+        if (GameManager.win && teamId > 0)
+        {
+            gameObject.GetComponent<Enemy>().scoreValue = 0;
+            Die();
         }
     }
 
@@ -100,10 +114,6 @@ public class Health : MonoBehaviour
     /// void (no return)
     /// </summary>
     /// <param name="newRespawnPosition">The new position to respawn at</param>
-    public void SetRespawnPoint(Vector3 newRespawnPosition)
-    {
-        respawnPosition = newRespawnPosition;
-    }
 
     /// <summary>
     /// Description:
@@ -115,8 +125,25 @@ public class Health : MonoBehaviour
     /// </summary>
     void Respawn()
     {
-        transform.position = respawnPosition;
+        timeToBecomeDamagableAgain = Time.time + invincibilityTime;
+
+        if (Bottom)
+        {
+            transform.position = new Vector3(Random.Range(-RespawnConstraintX, RespawnConstraintX), -22, 0);
+        }
+        else if (One)
+        {
+            transform.position = new Vector3(Random.Range(-54, 43), Random.Range(-23, 15), 0);
+        }
+        else
+        {
+            transform.position = new Vector3(Random.Range(-RespawnConstraintX, RespawnConstraintX), Random.Range(-RespawnConstraintY, RespawnConstraintY), 0);
+        }
+
         currentHealth = defaultHealth;
+        MainCamera.GetComponent<CameraController>().Unlock();
+        Player.SetActive(true);
+        Player.GetComponent<Controller>().isLocked = false;
     }
 
     /// <summary>
@@ -143,6 +170,7 @@ public class Health : MonoBehaviour
             timeToBecomeDamagableAgain = Time.time + invincibilityTime;
             isInvincableFromDamage = true;
             currentHealth -= damageAmount;
+
             CheckDeath();
         }
     }
@@ -231,7 +259,19 @@ public class Health : MonoBehaviour
         currentLives -= 1;
         if (currentLives > 0)
         {
-            Respawn();
+            if (teamId == 0)
+            {
+                Player.GetComponent<Rigidbody2D>();
+                Player.GetComponent<Controller>().isLocked = true;
+                Player.SetActive(false);
+                MainCamera.GetComponent<CameraController>().Lock();
+                transform.position = new Vector2(0, 999);
+                Invoke("Respawn", 5f);
+            }
+            else
+            {
+                Respawn();
+            }
         }
         else
         {

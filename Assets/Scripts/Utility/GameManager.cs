@@ -52,11 +52,13 @@ public class GameManager : MonoBehaviour
     // The number of enemies defeated in game
     private int enemiesDefeated = 0;
 
+    static public bool win;
+
     [Tooltip("Whether or not to print debug statements about whether the game can be won or not according to the game manager's" +
         " search at start up")]
     public bool printDebugOfWinnableStatus = true;
     [Tooltip("Page index in the UIManager to go to on winning the game")]
-    public int gameVictoryPageIndex = 0;
+    public int gameVictoryPageIndex = 3;
     [Tooltip("The effect to create upon winning the game")]
     public GameObject victoryEffect;
 
@@ -66,11 +68,6 @@ public class GameManager : MonoBehaviour
     private int playerSkin;
     public Sprite[] skins;
 
-
-    private void OnEnable()
-    {
-        
-    }
     /// <summary>
     /// Description:
     /// Standard Unity function called when the script is loaded, called before start
@@ -104,6 +101,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         HandleStartUp();
+        win = false;
     }
 
     /// <summary>
@@ -326,6 +324,7 @@ public class GameManager : MonoBehaviour
             {
                 Instantiate(victoryEffect, transform.position, transform.rotation, null);
             }
+            win = true;
         }     
     }
 

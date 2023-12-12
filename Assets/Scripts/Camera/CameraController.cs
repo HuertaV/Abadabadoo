@@ -165,4 +165,15 @@ public class CameraController : MonoBehaviour
         result.z = cameraZCoordinate;
         return result;
     }
+
+    public void Lock()
+    {
+        cameraMovementStyle = CameraStyles.Locked;
+    }
+
+    public void Unlock()
+    {
+        cameraMovementStyle = CameraStyles.Free;
+    }
+
 }

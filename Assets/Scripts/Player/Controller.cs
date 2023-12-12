@@ -22,6 +22,7 @@ public class Controller : MonoBehaviour
 
     //The InputManager to read input from
     private InputManager inputManager;
+    public bool isLocked;
 
     /// <summary>
     /// Enum which stores different aiming modes
