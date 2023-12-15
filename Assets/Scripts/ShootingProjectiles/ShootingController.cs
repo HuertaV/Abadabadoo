@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 /// <summary>
 /// A class which controlls player aiming and shooting
@@ -35,6 +36,16 @@ public class ShootingController : MonoBehaviour
 
     //The input manager which manages player input
     private InputManager inputManager = null;
+
+    [Header("Shoot Mode")]
+    [Tooltip("The Way This Enemy Shoots Projectiles")]
+    public bool multiShot;
+    public bool shoot;
+    public int shootnum;
+    public bool startMulti;
+    public int shootAmount;
+    public float shootCooldown;
+    public AudioSource reload;
 
     /// <summary>
     /// Description:
@@ -116,7 +127,7 @@ public class ShootingController : MonoBehaviour
     public void Fire()
     {
         // If the cooldown is over fire a projectile
-        if ((Time.timeSinceLevelLoad - lastFired) > fireRate)
+        if ((Time.timeSinceLevelLoad - lastFired) > fireRate && !multiShot)
         {
             // Launches a projectile
             SpawnProjectile();
@@ -129,7 +140,42 @@ public class ShootingController : MonoBehaviour
 
             // Restart the cooldown
             lastFired = Time.timeSinceLevelLoad;
+        } else if ((Time.timeSinceLevelLoad - lastFired) > fireRate && multiShot)
+        {
+
+            if (startMulti)
+            {
+                fireRate = 0.1f;
+                startMulti = false;
+                shoot = true;
+                shootnum = 0;
+            }
+
+            if (shootnum > shootAmount)
+            {
+                shoot = false;
+                fireRate = shootCooldown;
+                //StartCoroutine("CoolDown");
+                startMulti = true;
+                if (tag == "Player")
+                {
+                    reload.Play();
+                }
+            }
+
+            if (shoot)
+            {
+                SpawnProjectile();
+                lastFired = Time.timeSinceLevelLoad;
+                shootnum++;
+            }
+
         }
+    }
+    IEnumerator CoolDown()
+    {
+        yield return new WaitForSeconds(3);
+        startMulti = true;
     }
 
     /// <summary>
